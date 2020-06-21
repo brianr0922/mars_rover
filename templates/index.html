@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Mars Rover Images</title>
+  </head>
+  <body>
+      <div class="text-center" style="background-color: black">
+        <h1 class="text-white">Mars Rover Images</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" alt="Mars" style="max-width:50%">
+      </div>
+
+      <div class="container-fluid text-center text-white" style="background-color: black">
+        <h2>Select Rover</h2>
+        <form action="/rover" method="post">
+          <div class="radio">
+            <label><input type="radio" name="optrover" value="Curiosity" checked> Curiosity</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optrover" value="Opportunity"> Opportunity</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optrover" value="Spirit"> Spirit</label>
+          </div>
+          <div class="container" style="background-color: black">
+            <button type="submit" class="btn btn-default btn-lg" style="background-color: white" value="Rover">Next</button>
+          </div>
+      </div>
+  </body>
+</html>
