@@ -8,15 +8,13 @@ def home():
 @app.route('/rover', methods = ['POST'])
 def rover():
 	rov_name = request.form['optrover']
-#	if request.form['optrover'] == 'on':
-#		rov_name = 'Curiosity'
-#	elif request.form['optopp'] == 'on':
-#		rov_name = 'Opportunity'
-#	else:
-#		rov_name = 'Spirit'
 	print("Selected rover: " + rov_name)
 	print(type(rov_name))
-	return redirect('/')
+	return redirect('/<rov_name>.html')
+
+@app.route('/<rov_name>.html')
+def pic_criteria(rov_name):
+	return render_template('pic_criteria.html', data=rov_name)
 
 if __name__ == '__main__':
 	app.run(debug=True)
