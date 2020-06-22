@@ -10,7 +10,7 @@ def rover():
 	rov_name = request.form['optrover']
 	print("Selected rover: " + rov_name)
 	print(type(rov_name))
-	return redirect('/<rov_name>.html')
+	return redirect(f'/{rov_name}.html')
 
 @app.route('/<rov_name>.html')
 def pic_criteria(rov_name):
