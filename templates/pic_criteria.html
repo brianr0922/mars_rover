@@ -12,19 +12,18 @@
   </head>
   <body>
       <div class="text-center" style="background-color: black">
-        <h1 class="text-white">Rover Criteria Selection</h1>
+        <h1 class="text-white">{{data}} Rover Criteria Selection</h1>
         <img src="https://boygeniusreport.files.wordpress.com/2019/05/capture-26.jpg?quality=70&strip=all&w=782" alt="Curiosity" style="max-width:50%">
       </div>
 
       <div class="container-fluid text-center text-white" style="background-color: black">
         <h2>Select Date</h2>
         <form action="/pic_date" method="post">
-          <div class="input-append date" id="datetimepicker" data-date="2012-08-06" data-date-format="yyyy-mm-dd">
-            $('#datetimepicker').datetimepicker('setStartDate', '2012-08-06');
-            $('#datetimepicker').datetimepicker('setEndDate', '2020-06-19');
-            <input class="span2" size="16" type="text" value="2012-08-06">
-            <span class="add-on"><i class="icon-th"></i></span>
-          </div> 
+          <div class="input-group date">
+            <input class="form-control" id="date" name="date" placeholder="2020-06-19" type="text" data-date-end-date="2020-06-19" data-date-start-date="2012-08-06" style="width:50px;"/>
+          </div>
+          <br>
+          <h2>Select Camera</h2>
           <div class="radio">
             <label><input type="radio" name="optcam" value="FHAZ" checked> Front Hazard Avoidance Camera</label>
           </div>
@@ -35,8 +34,27 @@
             <label><input type="radio" name="optcam" value="MAST"> Mast Camera</label>
           </div>
           <div class="container" style="background-color: black">
-            <button type="submit" class="btn btn-default btn-lg" style="background-color: white" value="Rover">Next</button>
+            <button type="submit" class="btn btn-default btn-lg" style="background-color: white" value="Rover">Submit</button>
           </div>
       </div>
   </body>
 </html>
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
