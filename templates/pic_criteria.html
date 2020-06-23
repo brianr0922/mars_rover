@@ -9,33 +9,49 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Mars Rover Images</title>
+    <style>
+      .input-group {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      width: 300px;
+      margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
       <div class="text-center" style="background-color: black">
-        <h1 class="text-white">{{data}} Rover Criteria Selection</h1>
-        <img src="https://boygeniusreport.files.wordpress.com/2019/05/capture-26.jpg?quality=70&strip=all&w=782" alt="Curiosity" style="max-width:50%">
+        <h1 class="text-white">{{rname}} Rover Criteria Selection</h1>
+        <img src={{rpic}} alt={{rname}} style="max-width:40%">
       </div>
+
+      {% if emsg != "OK" %}
+        <br>
+        <h1 class="text-red">{{emsg}}</h1>
+        <br>
+      {% endif %}
 
       <div class="container-fluid text-center text-white" style="background-color: black">
         <h2>Select Date</h2>
-        <form action="/pic_date" method="post">
+        <form action="/img_criteria?rov_name={{rname}}" method="post">
           <div class="input-group date">
-            <input class="form-control" id="date" name="date" placeholder="2020-06-19" type="text" data-date-end-date="2020-06-19" data-date-start-date="2012-08-06" style="width:50px;"/>
+            <input class="form-control" id="date" name="date" placeholder={{edat}} type="text" data-date-end-date={{edat}} data-date-start-date={{sdat}}/>
           </div>
           <br>
           <h2>Select Camera</h2>
-          <div class="radio">
-            <label><input type="radio" name="optcam" value="FHAZ" checked> Front Hazard Avoidance Camera</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="optcam" value="RHAZ"> Rear Hazard Avoidance Camera</label>
-          </div>
-          <div class="radio">
-            <label><input type="radio" name="optcam" value="MAST"> Mast Camera</label>
-          </div>
+          {% for cname in clist %}
+            <div class="radio">
+              <label><input type="radio" name="optcam" value={{cname}}> {{clist[cname]}}</label>
+            </div>
+          {% endfor %}
           <div class="container" style="background-color: black">
             <button type="submit" class="btn btn-default btn-lg" style="background-color: white" value="Rover">Submit</button>
           </div>
+          <br><br><br><br>
       </div>
   </body>
 </html>
@@ -53,7 +69,7 @@
         date_input.datepicker({
             format: 'yyyy-mm-dd',
             container: container,
-            todayHighlight: true,
+            todayHighlight: false,
             autoclose: true,
         })
     })

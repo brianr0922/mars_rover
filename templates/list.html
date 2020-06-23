@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Mars Rover Images</title>
+    <style>
+      .input-group {
+      position: relative;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      width: 300px;
+      margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="text-center" style="background-color: black">
+        <h1 class="text-white">{{rname}} Rover Images</h1>
+<!--
+        <img src={{rpic}} alt={{rname}} style="max-width:100%">
+-->
+      </div>
+
+      <div class="container-fluid text-center text-white" style="background-color: black">
+        <form action="/pic_list" method="post">
+          <table class="table table-striped table-dark">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Earth Date</th>
+                <th scope="col">Camera</th>
+                <th scope="col">Image Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for rowdet in ilist %}
+                <tr>
+                  <th scope="row">{{rowdet}}</th>
+                  <td>{{ilist[rowdet]["earth_date"]}}</td>
+                  <td>{{ilist[rowdet]["camera"]}}</td>
+                  <td><a href="{{ilist[rowdet]["img_url"]}}">View Image</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="container" style="background-color: black">
+            <a href="/">Start over</a>
+          </div>
+
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Page JSON
+                  </button>
+                </h2>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  {{ilist}}
+                </div>
+              </div>
+          </div>
+          <br><br><br><br>
+      </div>
+  </body>
+</html>
