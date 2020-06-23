@@ -1,4 +1,4 @@
-api_key = "psRS2z5hwMfEJd55JH1ji8gKbuuFQsCdMK8DJFZQ"
+api_key = "{{insert your api key here}}"
 
 cam_names = {
 	"FHAZ": "Front Hazard Avoidance Camera",
