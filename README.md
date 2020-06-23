@@ -2,9 +2,8 @@
 Show images from Mars Rovers Curiosity, Opportunity, and Spirit, using the NASA Open API.
 
 ## Nasa Open API Information
-```
 https://api.nasa.gov/
-```
+
 ## Prerequisites
 Python3
 
