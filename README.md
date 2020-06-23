@@ -17,7 +17,9 @@ pip install flask
 
 3. Navigate to the directory
 
-4. Start the server
+4. Open config.py and insert your API key, or use "DEMO_KEY" which limits usage to 30 requests per hour / 50 requests per day
+
+5. Start the server
 ```
 python3 -m main
 ```
